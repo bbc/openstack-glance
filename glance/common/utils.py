@@ -716,7 +716,7 @@ def get_stores_from_request(req, body):
 
 
 def sort_image_locations(locations):
-    if not CONF.enabled_backends:
+    if not CONF.enabled_backends or len(locations) <= 1:
         return location_strategy.get_ordered_locations(locations)
 
     def get_store_weight(location):
